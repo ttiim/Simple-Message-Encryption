@@ -17,7 +17,8 @@ Assignment 3
 
 void help();                  //protype functions
 void check();
-
+void encrypt(char*, char*);
+void decipher(char* , char* );
 
 int main (int argc, char* argv[])  //this works..but could lead to SEG fault on another maschine... FIX this TW
 {
