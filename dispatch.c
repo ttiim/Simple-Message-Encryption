@@ -19,7 +19,7 @@ void help();                  //protype functions
 void check();
 
 
-int main (int argc, char* argv[])
+int main (int argc, char* argv[])  //this works..but could lead to SEG fault on another maschine... FIX this TW
 {
  
  if (argc < 2 || argc >4 )    //check arguement count
