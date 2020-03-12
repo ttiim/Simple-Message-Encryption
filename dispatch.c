@@ -20,17 +20,19 @@ void check();
 void encrypt(char*, char*);
 void decipher(char* , char* );
 
-int main (int argc, char* argv[])  //this works..but could lead to SEG fault on another maschine... FIX this TW
+int main (int argc, char* argv[])  //SEG Fault fixed
 {
- 
- if (argc < 2 || argc >4 )    //check arguement count
-	   {
-         check();		
-		 help('h');   
-         exit(-1);
-        }
+ //add some error checking so you don't do it wrong
+ //if (argc > 4 )    //check arguement count
+	//   {
+ //  //      check();		
+	// 	 //help('h'); 
+	// 	// argv[2]= "error_type";   //make sure you know what memory is read/write. if you only send 2 arguements dont try and write to the argv[3] as it is 'nothing useful' and will maybe throw seg fault
+	// //	 argv[3]= "error_type";
+ //     //   exit(-1);
+ //       }
 	
-char* input = argv[1];       //get user input.
+ char* input = argv[1];       //get user input.
  char i =input[1];           //get 2nd place in array
 
 int length = 0;
@@ -39,8 +41,9 @@ if (argc > 2) {
 }
 
 char* filenames1 = argv[2];	
-char* filenames2 = argv[3]; 
-printf("%s\n", argv[3]);
+char* filenames2 = argv[3];  //argv3 is not necessarily always specified
+//printf("%s\n", argv[3]);
+//printf("%s\n", "test1");
 char displayOption;             //intialize variables ie switch parameter
  
  
@@ -93,7 +96,7 @@ char displayOption;             //intialize variables ie switch parameter
 	break;
 	
 	case 'C':                                    //-e
-	//printf("Encrypting the cleartxt file: %s with given keyfile: %s....\n ",filenames1,filenames2);
+//	printf("Encrypting the cleartxt file: %s with given keyfile: %s....\n ",filenames1,filenames2);
 	encrypt(filenames1,filenames2);
 	
 
@@ -101,7 +104,7 @@ char displayOption;             //intialize variables ie switch parameter
 	
 	
 	case 'D':                                                // -d
-	//printf("Decipher ciphertext: %s filename with given keyfile: %s.",filenames1,filenames2);
+//	printf("Decipher ciphertext: %s filename with given keyfile: %s.",filenames1,filenames2);
 	decipher(filenames1,filenames2);
 	break;
 	 }	
@@ -124,10 +127,10 @@ return 0;
 	
 }
 
-void check()              //prints usage settings 
-{
+// void check()              //prints usage settings 
+// {
 
-	     printf("Usage:   encrypt -k 123\n");
-         printf("or:   encrypt -f textfile.txt\n");
-         printf("or:   encrypt -e/d textfile.txt keyfile.txt\n\n");
-}
+// 	     printf("Usage:   encrypt -k 123\n");
+//          printf("or:   encrypt -f textfile.txt\n");
+//          printf("or:   encrypt -e/d textfile.txt keyfile.txt\n\n");
+// }
